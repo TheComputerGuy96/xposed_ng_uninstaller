@@ -15,9 +15,9 @@ Profile @ XDA-Developers : [**Dark**❶](http://forum.xda-developers.com/member.
 Profile @ GitHub : [**Dark**❶](https://github.com/dark-1 "GitHub Profile") .   
   
   
-GitHub Pages Site : https://dark-1.github.io/Magisk-Module-Uninstaller-Template  
-GitHub Repository : https://github.com/dark-1/Magisk-Module-Uninstaller-Template  
-XDA Developers Thread : https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600  
+GitHub Pages Site : [**Magisk Module Uninstaller Template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages") .  
+GitHub Repository : [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub") .  
+XDA Developers Thread : [**[Magisk] Magisk Module Uninstaller Template**](https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600 "XDA Developers") .  
   
 
 ----------
