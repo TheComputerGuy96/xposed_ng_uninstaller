@@ -1,7 +1,7 @@
 #!/sbin/sh
-#
+# 
 ##########################################################################################
-#
+# 
 # Magisk
 # by topjohnwu
 # 
@@ -10,11 +10,11 @@
 # Profile :
 # https://forum.xda-developers.com/member.php?u=7292542
 # https://github.com/dark-1
-#
+# 
 # This script removes the Magisk Module files.
-#
+# 
 # DO Not Touch this Script Unless Necessary.
-#
+# 
 ##########################################################################################
 
 # Detect whether in boot mode
