@@ -1,5 +1,5 @@
 ##########################################################################################
-#
+# 
 # Magisk
 # by topjohnwu
 # 
@@ -7,24 +7,25 @@
 # By Dark1
 # Profile :
 # http://forum.xda-developers.com/member.php?u=7292542
-#
+# https://github.com/dark-1
+# 
 ##########################################################################################
-
+  
 ##########################################################################################
 # Defines
 ##########################################################################################
-
+# 
 # NOTE: This part has to be adjusted to fit your own needs
-# This will be the folder name under /magisk
-# This should also be the same as the id in your module.prop of your Magisk Module
+# This will be the folder name under "/magisk"
+# This should also be the same as the ID in your "config.sh" & "module.prop" of your Magisk Module
 MODID=template
-
+  
 ##########################################################################################
-# Installation Message
+# UnInstallation Message
 ##########################################################################################
-
-# Set what you want to show when installing your mod
-
+# 
+# Set what you want to show when Uninstalling your MOD
+  
 print_modname() {
   ui_print "************************************"
   ui_print " Magisk Module Uninstaller Template "
