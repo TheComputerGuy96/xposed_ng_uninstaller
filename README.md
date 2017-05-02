@@ -51,7 +51,7 @@ You might require to make changes to "update-binary" if you did some changes to 
   3. Directory `common` & All it's Content : File `file_contexts_image` , `post-fs-data.sh` , `service.sh` , `system.prop` .  
   
   
-###### EnJoY ...  :joy: ######  
+###### EnJoY ...  :smiley: ######  
   
 #### Credit's ####
   
