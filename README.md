@@ -73,9 +73,9 @@ Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , cou
 - Removed Un-Necessary Directory(s) & File(s).  
    
 #### v1.1 ####  
-- Udated `README` .  
-- Udated `config.sh` .  
-- Udated `update-binary` .  
+- Updated `README` .  
+- Updated `config.sh` .  
+- Updated `update-binary` .  
 - Added `.gitattributes` .  
 - Fixed `curSizeM` & `curFreeM` .  
   
