@@ -40,15 +40,15 @@ You might require to make changes to "update-binary" if you did some changes to 
 #### Thing's that are Removed ####  
   
 1. From **update-binary** File :  
-  1. Funtion : `grep_prop()` , `set_perm()` , `set_perm_recursive()` , `request_size_check()` .  
-  2. Variable : `INSTALLER` , `API` , `ABI` , `ABI2` , `ABILONG` , `ARCH` , `IS64BIT` .  
+    1. Funtion : `grep_prop()` , `set_perm()` , `set_perm_recursive()` , `request_size_check()` .  
+    2. Variable : `INSTALLER` , `API` , `ABI` , `ABI2` , `ABILONG` , `ARCH` , `IS64BIT` .  
 2. From **config.sh** File :  
-  1. Funtion : `set_permissions()` .  
-  2. Variable : `AUTOMOUNT` , `PROPFILE` , `POSTFSDATA` , `LATESTARTSERVICE` , `REPLACE` .  
+    1. Funtion : `set_permissions()` .  
+    2. Variable : `AUTOMOUNT` , `PROPFILE` , `POSTFSDATA` , `LATESTARTSERVICE` , `REPLACE` .  
 3. Directory(s) & File(s) :  
-  1. File `module.prop` .  
-  2. Directory `system` & All it's Content : File `placeholder` .  
-  3. Directory `common` & All it's Content : File `file_contexts_image` , `post-fs-data.sh` , `service.sh` , `system.prop` .  
+    1. File `module.prop` .  
+    2. Directory `system` & All it's Content : File `placeholder` .  
+    3. Directory `common` & All it's Content : File `file_contexts_image` , `post-fs-data.sh` , `service.sh` , `system.prop` .  
   
   
 ###### EnJoY ...  :smiley: ######  
