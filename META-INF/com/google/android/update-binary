@@ -27,7 +27,8 @@ umask 022
 # Functions
 ##########################################################################################
 
-ui_print() {
+ui_print() 
+{
   if $BOOTMODE; then
     echo "$1"
   else 
@@ -36,7 +37,8 @@ ui_print() {
   fi
 }
 
-is_mounted() {
+is_mounted() 
+{
   if [ ! -z "$2" ]; then
     cat /proc/mounts | grep $1 | grep $2, >/dev/null
   else
@@ -45,7 +47,8 @@ is_mounted() {
   return $?
 }
 
-mount_image() {
+mount_image() 
+{
   if [ ! -d "$2" ]; then
     mount -o rw,remount rootfs /
     mkdir -p $2 2>/dev/null
@@ -71,7 +74,7 @@ mount_image() {
           fi
         fi
         if (is_mounted $2); then
-          ui_print "- Mounting $1 to $2"
+          ui_print "- Mounting \"$1\" to \"$2\""
           break;
         fi
       fi
@@ -79,7 +82,8 @@ mount_image() {
   fi
 }
 
-mktouch() {
+mktouch() 
+{
   mkdir -p ${1%/*}
   if [ -z "$2" ]; then
     touch $1
@@ -89,19 +93,50 @@ mktouch() {
   chmod 644 $1
 }
 
-image_size_check() {
+image_size_check() 
+{
   e2fsck -yf $1
-  curBlocks=`e2fsck -n $1 2>/dev/null | grep $1 | cut -d, -f3 | cut -d\  -f2`;
-  curUsedM=`echo "$curBlocks" | cut -d/ -f1`
-  curSizeM=`echo "$curBlocks" | cut -d/ -f2`
-  curFreeM=$(((curSizeM - curUsedM) * 4 / 1024))
-  curUsedM=$((curUsedM * 4 / 1024 + 1))
-  curSizeM=$((curSizeM * 4 / 1024))
+  local Blocks=`e2fsck -n $1 2>/dev/null | grep $1 | cut -d, -f3 | cut -d\  -f2`;
+  local UsedM=`echo "$Blocks" | cut -d/ -f1`
+  local SizeM=`echo "$Blocks" | cut -d/ -f2`
+  curFreeM=$(((SizeM - UsedM) * 4 / 1024))
+  curUsedM=$((UsedM * 4 / 1024 + 1))
+  curSizeM=$((SizeM * 4 / 1024))
 }
 
-##########################################################################################
-# Flashable update-binary preparation
-##########################################################################################
+# ReSizeing the Image For Shrinking IF possible
+image_resize_shrink()
+{
+  local CHKIMG=$1
+  # Shrink the Image IF possible
+  image_size_check $CHKIMG
+  local NEWDATASIZE=$((curUsedM / 32 * 32 + 32))
+  if [ "$curSizeM" -gt "$NEWDATASIZE" ]; 
+  then
+    ui_print "- Shrinking \"$CHKIMG\" to ${NEWDATASIZE} M ..."
+    resize2fs $CHKIMG ${NEWDATASIZE}M
+  fi
+}
+
+# Image Check
+image_check() 
+{
+  local CHKIMG=$1
+  if [ -f "$CHKIMG" ];
+  then
+    ui_print "- \"$CHKIMG\" Detected!"
+  else
+    ui_print "! \"$CHKIMG\" NOT Detected!"
+    ui_print "! Magisk is NOT Installed!"
+    ui_print "! Magisk is Required for this Uninstaller!"
+    ui_print "! Hence!... Abort"
+    exit 1
+  fi
+}
+
+###########################################
+## Flashable update-binary preparation   ##
+###########################################
 
 OUTFD=$2
 ZIP=$3
@@ -123,7 +158,7 @@ if [ "$?" -eq "0" ]; then
 fi
 
 if $BOOTMODE && ! is_mounted /magisk; then
-  ui_print "! Magisk is not activated!... abort"
+  ui_print "! Magisk is NOT Activated!... Abort"
   exit 1
 fi
 
@@ -154,12 +189,12 @@ source config.sh
 
 MODPATH=$MOUNTPATH/$MODID
 
-##########################################################################################
-# Main
-##########################################################################################
+###########################################
+## Main                                  ##
+###########################################
 
 ui_print " "
-# Print mod name
+# Print MOD name
 print_modname
 ui_print " "
 # Please leave this message in your flashable zip for credits :)
@@ -168,11 +203,13 @@ ui_print " Magisk Module Uninstaller ZIP "
 ui_print " By Dark1                      "
 ui_print "*******************************"
 ui_print " "
-ui_print "! Removing Magisk Module [MODID] : $MODID !"
+ui_print "*******************************"
+ui_print " Powered by Magisk (@topjohnwu)"
+ui_print "*******************************"
 ui_print " "
-ui_print "******************************"
-ui_print "Powered by Magisk (@topjohnwu)"
-ui_print "******************************"
+ui_print "!!!*************************!!!"
+ui_print "! Removing Magisk Module [MODID] : $MODID !"
+ui_print "!!!*************************!!!"
 ui_print " "
 
 ui_print "- Mounting /system(ro), /vendor(ro), /data, /cache"
@@ -181,61 +218,48 @@ mount -o ro /vendor 2>/dev/null
 mount /data 2>/dev/null
 mount /cache 2>/dev/null
 
-if is_mounted /data; then
+if is_mounted /data;
+then
   IMG=/data/$IMGNAME
-  if [ ! -f "/data/magisk.img" ]; then
-    ui_print "! Magisk is not installed!"
-    ui_print "! Magisk is required for this Uninstaller!"
-    exit 1
-  fi
+  ui_print "- \"/data\" Availible !"
+  image_check $IMG
 else
-  IMG=/cache/magisk.img
+  IMG=/cache/$IMGNAME
   ui_print " "
   ui_print "***********************************"
-  ui_print "*      !! Data unavailible !!     *"
-  ui_print "* Magisk detection is impossible  *"
+  ui_print "*      !! Data UnAvailible !!     *"
+  ui_print "* Magisk Detection is Impossible  *"
   ui_print "* Uninstaller will still proceed  *"
   ui_print "*  But please make sure you have  *"
   ui_print "*        Magisk installed!!       *"
   ui_print "***********************************"
   ui_print " "
-fi
-
-if [ -f "$IMG" ]; then
-  ui_print "- $IMG detected!"
-else
-  ui_print "! $IMG NOT detected!... abort"
-  exit 1
+  image_check $IMG
 fi
 
 mount_image $IMG $MOUNTPATH
 if ! is_mounted $MOUNTPATH; then
-  ui_print "! $IMG mount failed... abort"
+  ui_print "! \"$IMG\" mount Failed!... Abort"
   exit 1
 fi
 
 if is_mounted $MOUNTPATH; then
   rm -rf $MODPATH 2>/dev/null
-  ui_print "- Removed Magisk Module : $MODID"
+  ui_print "- Removed Magisk Module : \"$MODID\" !"
 else
   mkdir -p $MODPATH
   mktouch $MODPATH/remove
   ui_print "- Will Remove Magisk Module \"$MODID\" on Next ReBoot !"
 fi
 
-ui_print "- Unmounting partitions"
+ui_print "- Unmounting Partition's"
 
 umount $MOUNTPATH
 losetup -d $LOOPDEVICE
 rmdir $MOUNTPATH
 
-# Shrink the image if possible
-image_size_check $IMG
-NEWDATASIZE=$((curUsedM / 32 * 32 + 32))
-if [ "$curSizeM" -gt "$NEWDATASIZE" ]; then
-  ui_print "- Shrinking $IMG to ${NEWDATASIZE}M..."
-  resize2fs $IMG ${NEWDATASIZE}M
-fi
+# Shrink the Image IF possible
+image_resize_shrink $IMG
 
 if ! $BOOTMODE; then
   umount /system
