@@ -27,8 +27,9 @@ XDA Developers Thread : [**[Magisk] Magisk Module Uninstaller Template**](https:
 
 ## Notes ##  
   
-Kindly Change what is requried in "config.sh", ie "MODID" & "print_modname()".  
+Kindly Change what is required in "config.sh", ie "MODID" & "print_modname()".  
 The "config.sh" from Here can also be Copied/Replaced over by "config.sh" from your **Magisk Module Installer**.[ No Problem Doing This ]  
+Also If Needed add Script in Function "script_before_uninstall()" & "script_after_uninstall()" .  
   
 I have **Copied** the Code from "magisk-module-template" ZIP by **topjohnwu**.  
 I have **Edited** some part of the Code to make it work for All General Magisk Module.  
