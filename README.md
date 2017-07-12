@@ -15,7 +15,7 @@ Profile @ XDA-Developers : [**Dark**❶](http://forum.xda-developers.com/member.
 Profile @ GitHub : [**Dark**❶](https://github.com/dark-1 "GitHub Profile") .   
 WebSite @ GitHub Pages : [**Dark**❶ WebSite](https://dark-1.github.io "GitHub WebSite") .   
   
-  
+**Magisk Module Uninstaller Template** :-  
 GitHub Pages Site : [**Magisk Module Uninstaller Template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages") .  
 GitHub Repository : [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub") .  
 XDA Developers Thread : [**[Magisk] Magisk Module Uninstaller Template**](https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600 "XDA Developers") .  
@@ -40,8 +40,8 @@ You might require to make changes to "update-binary" if you did some changes to 
 #### Thing's that are Removed ####  
   
 1. From **update-binary** File :  
-    1. Funtion : `grep_prop()` , `set_perm()` , `set_perm_recursive()` , `request_size_check()` .  
-    2. Variable : `INSTALLER` , `API` , `ABI` , `ABI2` , `ABILONG` , `ARCH` , `IS64BIT` .  
+    1. Funtion : Un-Necessary Function's .  
+    2. Variable : Un-Necessary Variable's .  
 2. From **config.sh** File :  
     1. Funtion : `set_permissions()` .  
     2. Variable : `AUTOMOUNT` , `PROPFILE` , `POSTFSDATA` , `LATESTARTSERVICE` , `REPLACE` .  
@@ -61,7 +61,7 @@ Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , cou
 ----------
 
 ## Changelog ##  
-#### Close to Magisk Module Template v3 ! ####  
+    
 #### v0.0 ####  
 - Initialized.  
 
@@ -86,5 +86,18 @@ Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , cou
 - Changed Most Function Variable's to Local Variable's .  
 - Modified Check for `IMG` in `/data` OR `/cache` .  
 - And Then , Called `image_check()` to Verify .  
+   
+#### v1.3 ####  
+- Updated to Magisk Module Template v4 ! .  
+- UnReleased Version .  
+   
+#### v1.4 ####  
+- Updated `README` .  
+- Updated `update-binary` .  
+- Removed all Un-Necessary Function's .  
+- Removed all Un-Necessary Variable's .  
+- ReNamed `INSTALLER` to `UNINSTALLER` .   
+- Added Function `script_before_uninstall()` & `script_after_uninstall()` .  
+- Close to Magisk Module Template v4 ! .  
   
 .
