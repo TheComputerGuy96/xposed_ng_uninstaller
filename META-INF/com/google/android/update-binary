@@ -142,7 +142,7 @@ $BOOTMODE && ! is_mounted /magisk && abort "! Magisk is not activated!"
 
 ui_print "- Mounting $IMG to $MOUNTPATH"
 MAGISKLOOP=`$MAGISKBIN/magisk --mountimg $IMG $MOUNTPATH`
-is_mounted $MOUNTPATH || abort"! $IMG mount failed..."
+is_mounted $MOUNTPATH || abort "! $IMG mount failed..."
 
 # Execute script_before_uninstall() Fn
 script_before_uninstall
