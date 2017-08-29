@@ -7,17 +7,17 @@ by **topjohnwu**
 
 ----------
 
-This is a **Magisk module uninstaller template** *ZIP* for developers.
+This is a **Magisk module uninstaller template** *ZIP* for developers.  
 A.K.A. "**M2UT**" in short.
 
-By **Dark**❶
-Profile at XDA-Developers: [**Dark**❶](http://forum.xda-developers.com/member.php?u=7292542 "XDA profile").
-Profile at GitHub: [**Dark**❶](https://github.com/dark-1 "GitHub profile").
+By **Dark**❶  
+Profile at XDA-Developers: [**Dark**❶](http://forum.xda-developers.com/member.php?u=7292542 "XDA profile").  
+Profile at GitHub: [**Dark**❶](https://github.com/dark-1 "GitHub profile").  
 Website at GitHub Pages: [**Dark**❶ website](https://dark-1.github.io "GitHub website").
 
-**Magisk Module Uninstaller Template** :-
-GitHub Pages site: [**Magisk module uninstaller template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages").
-GitHub repository: [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub").
+**Magisk Module Uninstaller Template** :-  
+GitHub Pages site: [**Magisk module uninstaller template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages").  
+GitHub repository: [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub").  
 XDA-Developers thread: [**[Magisk] Magisk module uninstaller template**](https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600 "XDA-Developers").
 
 
@@ -27,12 +27,12 @@ XDA-Developers thread: [**[Magisk] Magisk module uninstaller template**](https:/
 
 ## Notes ##
 
-Kindly change what is required in "config.sh" file, i.e. "MODID" and "print_modname".
+Kindly change what is required in "config.sh" file, i.e. "MODID" and "print_modname".  
 The "config.sh" from here can also be replaced by "config.sh" from your **Magisk module installer** (No problem by doing this).
 
-I've **copied** the code from "magisk-module-template" repository by **topjohnwu**.
-I've **edited** some parts of the code to make it work for all general Magisk modules.
-I've **removed** unnecessary parts of code because they're *either* not used *or* not needed.
+I've **copied** the code from "magisk-module-template" repository by **topjohnwu**.  
+I've **edited** some parts of the code to make it work for all general Magisk modules.  
+I've **removed** unnecessary parts of code because they're *either* not used *or* not needed.  
 I've **removed** unnecessary directories and files because they're *either* not used *or* not needed.
 
 You might have to make changes to "update-binary" if you did some changes to "update-binary" in "Magisk module installer" of your Magisk module.

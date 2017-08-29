@@ -18,7 +18,7 @@
 # Note: This part has to be adjusted to fit your own needs
 # This will be the folder name under "/magisk"
 # This should also be the same as the ID in "config.sh" and "module.prop" files of your Magisk module
-MODID=xposed_ng
+MODID=xposed_25
 
 ##########################################################################################
 # Uninstallation message
