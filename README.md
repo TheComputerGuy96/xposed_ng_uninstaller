@@ -1,104 +1,101 @@
-# Magisk Module Uninstaller Template #  
+# Magisk module uninstaller template #
 
 ----------
 
-### Magisk ###  
-by **topjohnwu**  
+### Magisk ###
+by **topjohnwu**
 
 ----------
 
-This is a **Magisk Module Uninstaller Template** *ZIP* for Developers.  
-A.K.A. "**M2UT**" in Short.  
-  
-By **Dark**❶  
-Profile @ XDA-Developers : [**Dark**❶](http://forum.xda-developers.com/member.php?u=7292542 "XDA Profile") .  
-Profile @ GitHub : [**Dark**❶](https://github.com/dark-1 "GitHub Profile") .   
-WebSite @ GitHub Pages : [**Dark**❶ WebSite](https://dark-1.github.io "GitHub WebSite") .   
-  
-**Magisk Module Uninstaller Template** :-  
-GitHub Pages Site : [**Magisk Module Uninstaller Template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages") .  
-GitHub Repository : [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub") .  
-XDA Developers Thread : [**[Magisk] Magisk Module Uninstaller Template**](https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600 "XDA Developers") .  
-  
+This is a **Magisk module uninstaller template** *ZIP* for developers.
+A.K.A. "**M2UT**" in short.
+
+By **Dark**❶
+Profile at XDA-Developers: [**Dark**❶](http://forum.xda-developers.com/member.php?u=7292542 "XDA profile").
+Profile at GitHub: [**Dark**❶](https://github.com/dark-1 "GitHub profile").
+Website at GitHub Pages: [**Dark**❶ website](https://dark-1.github.io "GitHub website").
+
+**Magisk Module Uninstaller Template** :-
+GitHub Pages site: [**Magisk module uninstaller template**](https://dark-1.github.io/Magisk-Module-Uninstaller-Template "GitHub Pages").
+GitHub repository: [**Magisk-Module-Uninstaller-Template**](https://github.com/dark-1/Magisk-Module-Uninstaller-Template "GitHub").
+XDA-Developers thread: [**[Magisk] Magisk module uninstaller template**](https://forum.xda-developers.com/apps/magisk/magisk-module-uninstaller-template-t3597600 "XDA-Developers").
+
 
 ----------
 
 ----------
 
-## Notes ##  
+## Notes ##
+
+Kindly change what is required in "config.sh" file, i.e. "MODID" and "print_modname".
+The "config.sh" from here can also be replaced by "config.sh" from your **Magisk module installer** (No problem by doing this).
+
+I've **copied** the code from "magisk-module-template" repository by **topjohnwu**.
+I've **edited** some parts of the code to make it work for all general Magisk modules.
+I've **removed** unnecessary parts of code because they're *either* not used *or* not needed.
+I've **removed** unnecessary directories and files because they're *either* not used *or* not needed.
+
+You might have to make changes to "update-binary" if you did some changes to "update-binary" in "Magisk module installer" of your Magisk module.
+
+#### Things that are removed ####
+
+1. From **update-binary** file:
+    1. Unnecessary functions.
+    2. Unnecessary variables.
+2. From **config.sh** file:
+    1. Function `set_permissions`.
+    2. Variables: `AUTOMOUNT`, `PROPFILE`, `POSTFSDATA`, `LATESTARTSERVICE` and `REPLACE`.
+3. Directories and files:
+    1. File `module.prop`.
+    2. Directory `system` and all of its contents: File `placeholder`.
+    3. Directory `common` and all of its contents: Files `file_contexts_image`, `post-fs-data.sh`, `service.sh` and `system.prop`.
+
+
+###### EnJoY...  :smiley: ######
   
-Kindly Change what is required in "config.sh", ie "MODID" & "print_modname()".  
-The "config.sh" from Here can also be Copied/Replaced over by "config.sh" from your **Magisk Module Installer**.[ No Problem Doing This ]  
-Also If Needed add Script in Function "script_before_uninstall()" & "script_after_uninstall()" .  
-  
-I have **Copied** the Code from "magisk-module-template" ZIP by **topjohnwu**.  
-I have **Edited** some part of the Code to make it work for All General Magisk Module.  
-I have **Removed** Un-Necessary part of Code Because It is *Either* Not Used *OR* Not Needed.  
-I have **Removed** Un-Necessary Directory(s) & File(s) Because It is *Either* Not Used *OR* Not Needed.  
-  
-You might require to make changes to "update-binary" if you did some changes to "update-binary" in "Magisk Module Installer" of your Magisk Module.    
-  
-#### Thing's that are Removed ####  
-  
-1. From **update-binary** File :  
-    1. Funtion : Un-Necessary Function's .  
-    2. Variable : Un-Necessary Variable's .  
-2. From **config.sh** File :  
-    1. Funtion : `set_permissions()` .  
-    2. Variable : `AUTOMOUNT` , `PROPFILE` , `POSTFSDATA` , `LATESTARTSERVICE` , `REPLACE` .  
-3. Directory(s) & File(s) :  
-    1. File `module.prop` .  
-    2. Directory `system` & All it's Content : File `placeholder` .  
-    3. Directory `common` & All it's Content : File `file_contexts_image` , `post-fs-data.sh` , `service.sh` , `system.prop` .  
-  
-  
-###### EnJoY ...  :smiley: ######  
-  
-#### Credit's ####
-  
-Thanks **topjohnwu** for Magisk & for the code in "magisk-module-template" , could not have done without it.  
-  
+#### Credits ####
+
+Thanks to **topjohnwu** for Magisk and the code in "magisk-module-template" repository, I couldn't have done this ZIP without those things.
+
 
 ----------
 
-## Changelog ##  
-    
-#### v0.0 ####  
-- Initialized.  
+## Changelog ##
 
-#### v1.0 ####  
-- Initial Release.  
-- Copied the Code.  
-- Edited some part of the Code.  
-- Removed Un-Necessary part of Code.  
-- Removed Un-Necessary Directory(s) & File(s).  
-   
-#### v1.1 ####  
-- Updated `README` .  
-- Updated `config.sh` .  
-- Updated `update-binary` .  
-- Added `.gitattributes` .  
-- Fixed `curSizeM` & `curFreeM` .  
-   
-#### v1.2 ####  
-- Updated `README` .  
-- Updated `update-binary` .  
-- Added Function `image_resize_shrink()` & `image_check()` .  
-- Changed Most Function Variable's to Local Variable's .  
-- Modified Check for `IMG` in `/data` OR `/cache` .  
-- And Then , Called `image_check()` to Verify .  
-   
-#### v1.3 ####  
-- Updated to Magisk Module Template v4 ! .  
-- UnReleased Version .  
-   
-#### v1.4 ####  
-- Updated `README` .  
-- Updated `update-binary` .  
-- Removed all Un-Necessary Function's .  
-- Removed all Un-Necessary Variable's .  
-- ReNamed `INSTALLER` to `UNINSTALLER` .   
-- Added Function `script_before_uninstall()` & `script_after_uninstall()` .  
-- Close to Magisk Module Template v4 ! .  
-  
-.
+#### v0.0 ####
+- Initialized the repository.
+
+#### v1.0 ####
+- Initial release.
+- Copied the code.
+- Edited some parts of the code.
+- Removed unnecessary parts of code.
+- Removed unnecessary directories and files.
+
+#### v1.1 ####
+- Updated `README`.
+- Updated `config.sh`.
+- Updated `update-binary`.
+- Added `.gitattributes`.
+- Fixed `curSizeM` and `curFreeM`.
+
+#### v1.2 ####
+- Updated `README`.
+- Updated `update-binary`.
+- Added `image_resize_shrink` and `image_check` functions.
+- Changed most functions' variables to local variables.
+- Modified check for `IMG` in `/data` or `/cache`.
+- And then, called `image_check` to verify.
+
+#### v1.3 ####
+- Updated to Magisk module template v4.
+- Unreleased version.
+
+#### v1.4 ####
+- Updated `README`.
+- Updated `update-binary`.
+- Removed all unnecessary functions.
+- Removed all unnecessary variables.
+- Renamed `INSTALLER` to `UNINSTALLER`.
+- Added `script_before_uninstall` and `script_after_uninstall` functions.
+- Close to Magisk module template v4.

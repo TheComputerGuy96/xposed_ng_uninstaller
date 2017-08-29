@@ -3,28 +3,28 @@
 # Magisk
 # by topjohnwu
 # 
-# This is a Magisk Module Uninstaller Template ZIP for Developers
+# This is a Magisk module uninstaller template ZIP for developers
 # By Dark1
-# Profile :
+# Profile:
 # http://forum.xda-developers.com/member.php?u=7292542
 # https://github.com/dark-1
 # 
 ##########################################################################################
-  
+
 ##########################################################################################
 # Defines
 ##########################################################################################
-  
-# NOTE: This part has to be adjusted to fit your own needs
+
+# Note: This part has to be adjusted to fit your own needs
 # This will be the folder name under "/magisk"
-# This should also be the same as the ID in your "config.sh" & "module.prop" of your Magisk Module
+# This should also be the same as the ID in "config.sh" and "module.prop" files of your Magisk module
 MODID=xposed_ng
-  
+
 ##########################################################################################
-# UnInstallation Message
+# Uninstallation message
 ##########################################################################################
-  
-# Set what you want to show when Uninstalling your MOD
+
+# Set what you want to show when uninstalling your mod
 print_modname() {
   ui_print "*********************************"
   ui_print "Xposed framework uninstaller ZIP "

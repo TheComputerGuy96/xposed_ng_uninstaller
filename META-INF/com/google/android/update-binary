@@ -5,15 +5,15 @@
 # Magisk
 # by topjohnwu
 # 
-# This is a Magisk Module Uninstaller ZIP for Developers
+# This is a Magisk module uninstaller ZIP for developers
 # By Dark1
-# Profile :
+# Profile:
 # https://forum.xda-developers.com/member.php?u=7292542
 # https://github.com/dark-1
 # 
-# This script removes the Magisk Module files.
+# This script removes the Magisk module files.
 # 
-# DO Not Touch this Script Unless Necessary.
+# Do NOT touch this script unless necessary.
 # 
 ##########################################################################################
 
@@ -21,14 +21,13 @@
 ps | grep zygote | grep -v grep >/dev/null && BOOTMODE=true || BOOTMODE=false
 $BOOTMODE || ps -A 2>/dev/null | grep zygote | grep -v grep >/dev/null && BOOTMODE=true
 
+# This ZIP shouldn't be flashed in Android/Magisk Manager
+$BOOTMODE && abort "! This ZIP can't be flashed through Magisk Manager"
+
 # This path should work in any cases
 TMPDIR=/dev/tmp
 MOUNTPATH=/magisk
 IMG=/data/magisk.img
-if $BOOTMODE; then
-  MOUNTPATH=/dev/magisk_merge
-  IMG=/data/magisk_merge.img
-fi
 UNINSTALLER=$TMPDIR/uninstall
 MAGISKBIN=/data/magisk
 
@@ -43,12 +42,8 @@ OUTFD=$2
 ZIP=$3
 
 ui_print() {
-  if $BOOTMODE; then
-    echo "$1"
-  else 
-    echo -n -e "ui_print $1\n" >> /proc/self/fd/$OUTFD
-    echo -n -e "ui_print\n" >> /proc/self/fd/$OUTFD
-  fi
+  echo -n -e "ui_print $1\n" >> /proc/self/fd/$OUTFD
+  echo -n -e "ui_print\n" >> /proc/self/fd/$OUTFD
 }
 
 require_new_magisk() {
@@ -70,28 +65,15 @@ mount /data 2>/dev/null
 [ ! -z $SCRIPT_VERSION -a $SCRIPT_VERSION -ge 1310 ] || require_new_magisk
 get_outfd
 
-# Dummy MODID
-MODID=UnInstall
+# Dummy MODID variable
+MODID=uninstall
 
-# Dummy print_modname() Fn
-print_modname()
-{
-  # print_modname() Fn
+# Dummy print_modname function
+print_modname() {
+  # print_modname function
   ui_print "*******************************"
-  ui_print "   Magisk Module Uninstaller   "
+  ui_print "   Magisk module uninstaller   "
   ui_print "*******************************"
-}
-
-# Dummy script_before_uninstall() Fn
-script_before_uninstall()
-{
-  # script_before_uninstall() Fn
-}
-
-# Dummy script_after_uninstall() Fn
-script_after_uninstall()
-{
-  # script_after_uninstall() Fn
 }
 
 rm -rf $TMPDIR 2>/dev/null
@@ -102,19 +84,19 @@ unzip -o "$ZIP" config.sh -d $UNINSTALLER 2>/dev/null
 # Prepare
 ##########################################################################################
 
-[ ! -f $UNINSTALLER/config.sh ] && abort "! Unable to extract zip file!"
+[ ! -f $UNINSTALLER/config.sh ] && abort "! Unable to extract ZIP file!"
 
 . $UNINSTALLER/config.sh
 
 MODPATH=$MOUNTPATH/$MODID
 
 ui_print " "
-# Print MOD name
+# Print mod's name
 print_modname
 ui_print " "
-# Please leave this message in your flashable zip for credits :)
+# Please leave this message in your flashable ZIP for credits :)
 ui_print "*******************************"
-ui_print " Magisk Module Uninstaller ZIP "
+ui_print " Magisk module uninstaller ZIP "
 ui_print " By Dark1                      "
 ui_print "*******************************"
 ui_print " "
@@ -123,7 +105,7 @@ ui_print " Powered by Magisk (@topjohnwu)"
 ui_print "*******************************"
 ui_print " "
 ui_print "!!!*************************!!!"
-ui_print "! Removing Magisk Module [MODID] : $MODID !"
+ui_print "! Removing Magisk module [Mod ID]: \"$MODID\"!"
 ui_print "!!!*************************!!!"
 ui_print " "
 
@@ -133,28 +115,22 @@ mount -o ro /vendor 2>/dev/null
 mount /data 2>/dev/null
 mount /cache 2>/dev/null
 
-[ ! -f /data/magisk.img ] && abort "! Magisk is not installed"
-$BOOTMODE && ! is_mounted /magisk && abort "! Magisk is not activated!"
+[ ! -f $IMG ] && abort "! Magisk is not installed"
 
 ##########################################################################################
-# UnInstall
+# Uninstall
 ##########################################################################################
+
+# We're going to use magisk binary now, require some recovery fixes
+recovery_actions
 
 ui_print "- Mounting $IMG to $MOUNTPATH"
 MAGISKLOOP=`$MAGISKBIN/magisk --mountimg $IMG $MOUNTPATH`
 is_mounted $MOUNTPATH || abort "! $IMG mount failed..."
 
-# Execute script_before_uninstall() Fn
-script_before_uninstall
-
-# UnInstall Magisk Module
-if is_mounted $MODPATH; then
-  rm -rf $MODPATH 2>/dev/null
-  ui_print "- Removed Magisk Module : \"$MODID\" !"
-fi
-
-# Execute script_after_uninstall() Fn
-script_after_uninstall
+# Uninstall Magisk module
+rm -rf $MODPATH 2>/dev/null
+ui_print "- Removed Magisk module: \"$MODID\"!"
 
 ##########################################################################################
 # Finalizing
@@ -171,7 +147,7 @@ if [ $curSizeM -gt $newSizeM ]; then
   $MAGISKBIN/magisk --resizeimg $IMG $newSizeM
 fi
 
-$BOOTMODE || recovery_cleanup
+recovery_cleanup
 
 ui_print "- Done"
 exit 0
